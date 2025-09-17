@@ -1,0 +1,29 @@
+@prefix : <http://example.org/univ#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:Person a owl:Class .
+:Student a owl:Class ; rdfs:subClassOf :Person .
+:Lecturer a owl:Class ; rdfs:subClassOf :Person .
+:Course a owl:Class .
+:Department a owl:Class .
+
+:enrolledIn a owl:ObjectProperty ; rdfs:domain :Student ; rdfs:range :Course .
+:teaches a owl:ObjectProperty ; rdfs:domain :Lecturer ; rdfs:range :Course .
+:memberOf a owl:ObjectProperty ; rdfs:domain :Person ; rdfs:range :Department .
+
+:student_001 a :Student ;
+    :memberOf :dept_CS ;
+    :enrolledIn :course_AI ;
+    :name "Budi Santoso" .
+
+:lecturer_001 a :Lecturer ;
+    :name "Dr. Siti" ;
+    :teaches :course_AI .
+
+:course_AI a :Course ;
+    :title "Introduction to AI" .
+
+:dept_CS a :Department ; :name "Computer Science" .
